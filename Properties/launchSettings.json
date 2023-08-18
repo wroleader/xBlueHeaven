@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "xBlueHeaven": {
+      "commandName": "Project",
+      "commandLineArgs": "-debug"
+    }
+  }
+}
