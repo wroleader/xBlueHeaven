@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             pnlSidebar = new Panel();
             pBar = new CircularProgressBar.CircularProgressBar();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -47,9 +46,19 @@
             txtPwd = new TextBox();
             chkRemember = new CheckBox();
             chkAppPw = new CheckBox();
-            timer1 = new System.Windows.Forms.Timer(components);
+            pnlDragbar = new Panel();
+            lblResizeBarVertical = new Label();
+            panel1 = new Panel();
+            lblResizeBarHorizontal = new Label();
+            pnlLoginView = new Panel();
+            PostLayoutPanel = new Panel();
+            postLayoutControlPanel = new FlowLayoutPanel();
             pnlSidebar.SuspendLayout();
             pnlTitlebar.SuspendLayout();
+            pnlDragbar.SuspendLayout();
+            panel1.SuspendLayout();
+            pnlLoginView.SuspendLayout();
+            PostLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
             // pnlSidebar
@@ -246,68 +255,148 @@
             // 
             // btnLogin
             // 
+            btnLogin.Enabled = false;
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Location = new Point(269, 233);
+            btnLogin.Location = new Point(227, 187);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(147, 34);
-            btnLogin.TabIndex = 2;
+            btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Visible = false;
             btnLogin.Click += btnLogin_Click;
             // 
             // txtHandle
             // 
-            txtHandle.Location = new Point(269, 175);
+            txtHandle.Enabled = false;
+            txtHandle.Location = new Point(227, 129);
             txtHandle.Name = "txtHandle";
             txtHandle.PlaceholderText = "Handle";
             txtHandle.Size = new Size(147, 23);
-            txtHandle.TabIndex = 3;
+            txtHandle.TabIndex = 1;
             txtHandle.TextAlign = HorizontalAlignment.Center;
+            txtHandle.Visible = false;
             // 
             // txtPwd
             // 
-            txtPwd.Location = new Point(269, 204);
+            txtPwd.Enabled = false;
+            txtPwd.Location = new Point(227, 158);
             txtPwd.Name = "txtPwd";
             txtPwd.PasswordChar = '*';
             txtPwd.PlaceholderText = "App Password";
             txtPwd.Size = new Size(147, 23);
-            txtPwd.TabIndex = 4;
+            txtPwd.TabIndex = 2;
             txtPwd.TextAlign = HorizontalAlignment.Center;
+            txtPwd.Visible = false;
             // 
             // chkRemember
             // 
             chkRemember.CheckAlign = ContentAlignment.BottomCenter;
+            chkRemember.Enabled = false;
             chkRemember.FlatAppearance.BorderSize = 0;
             chkRemember.FlatStyle = FlatStyle.Flat;
-            chkRemember.Location = new Point(248, 273);
+            chkRemember.Location = new Point(259, 227);
             chkRemember.Name = "chkRemember";
             chkRemember.Size = new Size(88, 34);
             chkRemember.TabIndex = 5;
             chkRemember.Text = "Save Account";
             chkRemember.TextAlign = ContentAlignment.TopCenter;
             chkRemember.UseVisualStyleBackColor = true;
+            chkRemember.Visible = false;
             // 
             // chkAppPw
             // 
             chkAppPw.CheckAlign = ContentAlignment.BottomCenter;
             chkAppPw.Checked = true;
             chkAppPw.CheckState = CheckState.Checked;
+            chkAppPw.Enabled = false;
             chkAppPw.FlatAppearance.BorderSize = 0;
             chkAppPw.FlatStyle = FlatStyle.Flat;
-            chkAppPw.Location = new Point(337, 273);
+            chkAppPw.Location = new Point(248, 267);
             chkAppPw.Name = "chkAppPw";
             chkAppPw.Size = new Size(109, 34);
             chkAppPw.TabIndex = 6;
             chkAppPw.Text = "Use App Password";
             chkAppPw.TextAlign = ContentAlignment.TopCenter;
             chkAppPw.UseVisualStyleBackColor = true;
+            chkAppPw.Visible = false;
             chkAppPw.CheckedChanged += chkAppPw_CheckedChanged;
             // 
-            // timer1
+            // pnlDragbar
             // 
-            timer1.Enabled = true;
-            timer1.Interval = 600;
-            timer1.Tick += timer1_Tick;
+            pnlDragbar.BackColor = Color.Teal;
+            pnlDragbar.BorderStyle = BorderStyle.FixedSingle;
+            pnlDragbar.Controls.Add(lblResizeBarVertical);
+            pnlDragbar.Cursor = Cursors.SizeNS;
+            pnlDragbar.Location = new Point(44, 443);
+            pnlDragbar.Name = "pnlDragbar";
+            pnlDragbar.Size = new Size(642, 10);
+            pnlDragbar.TabIndex = 7;
+            // 
+            // lblResizeBarVertical
+            // 
+            lblResizeBarVertical.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblResizeBarVertical.BackColor = Color.Transparent;
+            lblResizeBarVertical.FlatStyle = FlatStyle.Flat;
+            lblResizeBarVertical.Location = new Point(-1, -5);
+            lblResizeBarVertical.Name = "lblResizeBarVertical";
+            lblResizeBarVertical.Size = new Size(642, 17);
+            lblResizeBarVertical.TabIndex = 0;
+            lblResizeBarVertical.Text = "- - -";
+            lblResizeBarVertical.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Teal;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblResizeBarHorizontal);
+            panel1.Cursor = Cursors.SizeWE;
+            panel1.Location = new Point(677, 27);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(9, 417);
+            panel1.TabIndex = 8;
+            // 
+            // lblResizeBarHorizontal
+            // 
+            lblResizeBarHorizontal.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblResizeBarHorizontal.BackColor = Color.Transparent;
+            lblResizeBarHorizontal.FlatStyle = FlatStyle.Flat;
+            lblResizeBarHorizontal.Location = new Point(-1, 184);
+            lblResizeBarHorizontal.Name = "lblResizeBarHorizontal";
+            lblResizeBarHorizontal.Size = new Size(9, 48);
+            lblResizeBarHorizontal.TabIndex = 0;
+            lblResizeBarHorizontal.Text = "---";
+            lblResizeBarHorizontal.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // pnlLoginView
+            // 
+            pnlLoginView.Controls.Add(PostLayoutPanel);
+            pnlLoginView.Controls.Add(chkAppPw);
+            pnlLoginView.Controls.Add(chkRemember);
+            pnlLoginView.Controls.Add(txtPwd);
+            pnlLoginView.Controls.Add(txtHandle);
+            pnlLoginView.Controls.Add(btnLogin);
+            pnlLoginView.Location = new Point(44, 27);
+            pnlLoginView.Name = "pnlLoginView";
+            pnlLoginView.Size = new Size(633, 417);
+            pnlLoginView.TabIndex = 9;
+            pnlLoginView.Visible = false;
+            // 
+            // PostLayoutPanel
+            // 
+            PostLayoutPanel.Controls.Add(postLayoutControlPanel);
+            PostLayoutPanel.Location = new Point(0, 0);
+            PostLayoutPanel.Name = "PostLayoutPanel";
+            PostLayoutPanel.Size = new Size(633, 417);
+            PostLayoutPanel.TabIndex = 7;
+            // 
+            // postLayoutControlPanel
+            // 
+            postLayoutControlPanel.Location = new Point(0, 0);
+            postLayoutControlPanel.Name = "postLayoutControlPanel";
+            postLayoutControlPanel.Size = new Size(633, 417);
+            postLayoutControlPanel.TabIndex = 0;
+            postLayoutControlPanel.Visible = false;
             // 
             // Form1
             // 
@@ -315,23 +404,25 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             ClientSize = new Size(685, 450);
-            Controls.Add(chkAppPw);
-            Controls.Add(chkRemember);
-            Controls.Add(txtPwd);
-            Controls.Add(txtHandle);
-            Controls.Add(btnLogin);
+            Controls.Add(pnlLoginView);
+            Controls.Add(panel1);
             Controls.Add(pnlTitlebar);
             Controls.Add(pnlSidebar);
+            Controls.Add(pnlDragbar);
             ForeColor = Color.White;
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             Name = "Form1";
-            Text = "Contrails";
+            Text = "BlueHeaven";
             Load += Form1_Load;
             pnlSidebar.ResumeLayout(false);
             pnlTitlebar.ResumeLayout(false);
+            pnlDragbar.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            pnlLoginView.ResumeLayout(false);
+            pnlLoginView.PerformLayout();
+            PostLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -354,6 +445,12 @@
         private TextBox txtPwd;
         private CheckBox chkRemember;
         private CheckBox chkAppPw;
-        private System.Windows.Forms.Timer timer1;
+        private Panel pnlDragbar;
+        private Label lblResizeBarVertical;
+        private Panel panel1;
+        private Label lblResizeBarHorizontal;
+        private Panel pnlLoginView;
+        private Panel PostLayoutPanel;
+        private FlowLayoutPanel postLayoutControlPanel;
     }
 }

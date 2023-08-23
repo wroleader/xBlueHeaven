@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace xBlueHeaven
 {
-    public sealed class ConsoleDebugLogger : ILogger
+    public class ConsoleDebugLogger
     {
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -17,44 +17,9 @@ namespace xBlueHeaven
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool FreeConsole();
 
-        private readonly string _name;
-        private readonly Func<ConsoleDebugLoggerConfiguration> _getCurrentConfig;
-
-        public ConsoleDebugLogger(
-            string name,
-            Func<ConsoleDebugLoggerConfiguration> getCurrentConfig) => (_name, _getCurrentConfig) = (name, getCurrentConfig);
-
-        public IDisposable? BeginScope<TState>(TState state) where TState : notnull => default!;
-
-        public bool IsEnabled(LogLevel logLevel) =>
-            _getCurrentConfig().LogLevelToColorMap.ContainsKey(logLevel);
-
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
-        {
-            if (!IsEnabled(logLevel))
-            {
-                return;
-            }
-
-            ConsoleDebugLoggerConfiguration config = _getCurrentConfig();
-
-            if (config.EventId == 0 || config.EventId == eventId.Id)
-            {
-                ConsoleColor originalColor = Console.ForegroundColor;
-
-                Console.ForegroundColor = config.LogLevelToColorMap[logLevel];
-                Console.WriteLine($"[{eventId.Id,2}: {logLevel,-12}]");
-
-                Console.ForegroundColor = originalColor;
-                Console.Write($"     {_name} - ");
-
-                Console.ForegroundColor = config.LogLevelToColorMap[logLevel];
-                Console.Write($"{formatter(state, exception)}");
-
-                Console.ForegroundColor = originalColor;
-                Console.WriteLine();
-            }
-        }
+        private string currentTime;
+        private string level;
+        private string message;
 
         public static void StartConsole()
         {
@@ -65,6 +30,29 @@ namespace xBlueHeaven
         public static void StopConsole()
         {
             FreeConsole();
+        }
+
+        public void LogInformation(string text)
+        {
+            currentTime = DateTime.Now.ToString();
+            level = " [INFO] ";
+            message = currentTime + level + text;
+
+            Console.Out.WriteLine(message);
+        }
+        public void LogWarning(string text)
+        {
+            currentTime = DateTime.Now.ToString();
+            level = " [WARNING] ";
+            message = currentTime + level + text;
+
+            Console.Out.WriteLine(message);
+        }
+        public void LogError(string text)
+        {
+            currentTime = DateTime.Now.ToString();
+            level = " [ERROR] ";
+            message = currentTime + level + text;
         }
     }
 }

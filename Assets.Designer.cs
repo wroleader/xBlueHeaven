@@ -83,6 +83,16 @@ namespace xBlueHeaven {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newpost {
+            get {
+                object obj = ResourceManager.GetObject("newpost", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap notifications {
             get {
                 object obj = ResourceManager.GetObject("notifications", resourceCulture);
