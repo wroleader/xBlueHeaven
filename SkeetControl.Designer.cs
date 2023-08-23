@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SkeetControl));
             imgUserAvatar = new PictureBox();
             lblUser = new Label();
             lblHandle = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tblUserHandle = new TableLayoutPanel();
+            lblSkeetContent = new Label();
+            pnlSkeetContent = new Panel();
+            btnReplies = new Button();
+            btnReskeet = new Button();
+            btnLike = new Button();
             ((System.ComponentModel.ISupportInitialize)imgUserAvatar).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
+            tblUserHandle.SuspendLayout();
+            pnlSkeetContent.SuspendLayout();
             SuspendLayout();
             // 
             // imgUserAvatar
@@ -53,37 +60,86 @@
             lblUser.Dock = DockStyle.Fill;
             lblUser.FlatStyle = FlatStyle.Flat;
             lblUser.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblUser.Location = new Point(3, 0);
+            lblUser.Location = new Point(4, 1);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(190, 28);
+            lblUser.Size = new Size(121, 26);
             lblUser.TabIndex = 0;
-            lblUser.Text = "Someone who's name is lmao";
+            lblUser.Text = "Namey McNamara";
             lblUser.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblHandle
             // 
             lblHandle.Dock = DockStyle.Fill;
             lblHandle.FlatStyle = FlatStyle.Flat;
-            lblHandle.Font = new Font("Segoe UI Semilight", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblHandle.Location = new Point(199, 0);
+            lblHandle.Font = new Font("Segoe UI Semilight", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblHandle.Location = new Point(132, 1);
             lblHandle.Name = "lblHandle";
-            lblHandle.Size = new Size(279, 28);
+            lblHandle.Size = new Size(345, 26);
             lblHandle.TabIndex = 1;
-            lblHandle.Text = "@";
+            lblHandle.Text = "@username.domain.something";
+            lblHandle.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanel1
+            // tblUserHandle
             // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(lblHandle, 1, 0);
-            tableLayoutPanel1.Controls.Add(lblUser, 0, 0);
-            tableLayoutPanel1.Location = new Point(83, 17);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(481, 28);
-            tableLayoutPanel1.TabIndex = 2;
+            tblUserHandle.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            tblUserHandle.ColumnCount = 2;
+            tblUserHandle.ColumnStyles.Add(new ColumnStyle());
+            tblUserHandle.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblUserHandle.Controls.Add(lblHandle, 1, 0);
+            tblUserHandle.Controls.Add(lblUser, 0, 0);
+            tblUserHandle.Location = new Point(83, 17);
+            tblUserHandle.Name = "tblUserHandle";
+            tblUserHandle.RowCount = 1;
+            tblUserHandle.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tblUserHandle.Size = new Size(481, 28);
+            tblUserHandle.TabIndex = 2;
+            // 
+            // lblSkeetContent
+            // 
+            lblSkeetContent.Dock = DockStyle.Fill;
+            lblSkeetContent.FlatStyle = FlatStyle.Flat;
+            lblSkeetContent.Location = new Point(0, 0);
+            lblSkeetContent.Name = "lblSkeetContent";
+            lblSkeetContent.Size = new Size(479, 94);
+            lblSkeetContent.TabIndex = 3;
+            lblSkeetContent.Text = resources.GetString("lblSkeetContent.Text");
+            lblSkeetContent.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // pnlSkeetContent
+            // 
+            pnlSkeetContent.BorderStyle = BorderStyle.FixedSingle;
+            pnlSkeetContent.Controls.Add(lblSkeetContent);
+            pnlSkeetContent.Location = new Point(83, 46);
+            pnlSkeetContent.Name = "pnlSkeetContent";
+            pnlSkeetContent.Size = new Size(481, 96);
+            pnlSkeetContent.TabIndex = 4;
+            // 
+            // btnReplies
+            // 
+            btnReplies.FlatStyle = FlatStyle.Flat;
+            btnReplies.Location = new Point(83, 151);
+            btnReplies.Name = "btnReplies";
+            btnReplies.Size = new Size(29, 29);
+            btnReplies.TabIndex = 5;
+            btnReplies.UseVisualStyleBackColor = true;
+            // 
+            // btnReskeet
+            // 
+            btnReskeet.FlatStyle = FlatStyle.Flat;
+            btnReskeet.Location = new Point(235, 151);
+            btnReskeet.Name = "btnReskeet";
+            btnReskeet.Size = new Size(29, 29);
+            btnReskeet.TabIndex = 6;
+            btnReskeet.UseVisualStyleBackColor = true;
+            // 
+            // btnLike
+            // 
+            btnLike.FlatStyle = FlatStyle.Flat;
+            btnLike.Location = new Point(387, 151);
+            btnLike.Name = "btnLike";
+            btnLike.Size = new Size(29, 29);
+            btnLike.TabIndex = 7;
+            btnLike.UseVisualStyleBackColor = true;
             // 
             // SkeetControl
             // 
@@ -91,14 +147,19 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
             BorderStyle = BorderStyle.FixedSingle;
-            Controls.Add(tableLayoutPanel1);
+            Controls.Add(btnLike);
+            Controls.Add(btnReskeet);
+            Controls.Add(btnReplies);
+            Controls.Add(pnlSkeetContent);
+            Controls.Add(tblUserHandle);
             Controls.Add(imgUserAvatar);
             ForeColor = Color.White;
             Name = "SkeetControl";
             Size = new Size(578, 188);
             ((System.ComponentModel.ISupportInitialize)imgUserAvatar).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
+            tblUserHandle.ResumeLayout(false);
+            tblUserHandle.PerformLayout();
+            pnlSkeetContent.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -107,6 +168,11 @@
         private PictureBox imgUserAvatar;
         private Label lblUser;
         private Label lblHandle;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tblUserHandle;
+        private Label lblSkeetContent;
+        private Panel pnlSkeetContent;
+        private Button btnReplies;
+        private Button btnReskeet;
+        private Button btnLike;
     }
 }
